@@ -1,0 +1,12 @@
+  <launch>
+    <!-- Tilt Laser Node-->
+    <arg name="port" />
+    <node pkg="microstrain_3dmgx2_imu" type="imu_node" name="imu" >
+        <param name="port" type="string" value="$(arg port)" />
+    </node>
+    <node name="tf_broadcaster" pkg="tilt_laser" type="tf_broadcaster.py" respawn="false" output="screen" />
+    <node type="laser_scan_assembler" pkg="laser_assembler" name="assembler">
+        <param name="fixed_frame" type="string" value="world" />
+	<param name="max_clouds" type="int" value="400" />
+    </node>
+  </launch>
