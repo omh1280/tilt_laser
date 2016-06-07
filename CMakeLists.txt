@@ -133,17 +133,16 @@ include_directories(
 # add_dependencies(tilt_laser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(tilt_laser_node src/tilt_laser_node.cpp)
+add_executable(tf_broadcaster nodes/tf_broadcaster.cpp)
+add_executable(laser_snapshot nodes/laser_snapshot.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(tilt_laser_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(tilt_laser_node
-#   ${catkin_LIBRARIES}
-# )
-
+target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
+target_link_libraries(laser_snapshot ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
