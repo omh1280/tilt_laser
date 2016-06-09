@@ -1,9 +1,14 @@
   <launch>
     <!-- Tilt Laser Node-->
+    <arg name="port" />
+    <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo" >
+    	<param name="port" type="string" value="$(arg port)" />
+    </node>
     <node pkg="microstrain_comm_35" type="microstrain_comm_35_node" name="imu" />
     <node name="tf_broadcaster" pkg="tilt_laser" type="tf_broadcaster" respawn="false" output="screen" />
     <node type="laser_scan_assembler" pkg="laser_assembler" name="assembler">
         <param name="fixed_frame" type="string" value="world" />
-        <param name="max_clouds" type="int" value="400" />
+        <param name="max_clouds" type="int" value="5000" />
     </node>
+    <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" />
   </launch>
