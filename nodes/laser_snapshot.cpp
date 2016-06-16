@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 	ros::Rate r(.5);
 
 	// Create publisher
-	ros::Publisher pub = n.advertise<sensor_msgs::PointCloud2>("cloud", 5);
+	ros::Publisher pub = n.advertise<sensor_msgs::PointCloud2>("cloud", 2);
 
 	while (ros::ok()) {
 		// Server
