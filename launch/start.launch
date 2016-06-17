@@ -11,5 +11,5 @@
         <param name="max_clouds" type="int" value="200" />
     </node>
     <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" />
-    <node name="door_locator" pkg="door_pcl" type="region_growing" />
+    <!--<node name="door_locator" pkg="door_pcl" type="region_growing" />-->
   </launch>
