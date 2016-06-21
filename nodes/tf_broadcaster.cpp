@@ -17,11 +17,11 @@ void handle_imu_rotation(const sensor_msgs::Imu &msg) {
 	// Below is crucial transformation -- I don't know why though
 	tf::Vector3 axis = q.getAxis();
 	axis.setY(-axis.y());
-	tf::Quaternion q2(axis, q.getAngle());
+	tf::Quaternion q2(axis, -q.getAngle());
 	// Set the transform
-	transform.setRotation(q2);
+	transform.setRotation(q2.normalize());
 	// Publish to tf
-	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "laser", "world"));
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "laser"));
 }
 
 int main(int argc, char **argv) {

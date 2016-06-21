@@ -135,6 +135,7 @@ include_directories(
 ## Declare a C++ executable
 add_executable(tf_broadcaster nodes/tf_broadcaster.cpp)
 add_executable(laser_snapshot nodes/laser_snapshot.cpp)
+add_executable(laser_frame nodes/laser_frame.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -143,6 +144,7 @@ add_executable(laser_snapshot nodes/laser_snapshot.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
 target_link_libraries(laser_snapshot ${catkin_LIBRARIES})
+target_link_libraries(laser_frame ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
