@@ -2,18 +2,29 @@
 
 <launch>
 
-  <param name="/use_sim_time" value="false"/>
+  <param name="/use_sim_time" value="true"/>
 
-  <node pkg="rviz" type="rviz" name="rviz"
-    args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz"/>
+
   <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 0 0 0 0 base_link laser 100" />
+
+<!--   <node pkg="hector_imu_attitude_to_tf" type="imu_attitude_to_tf_node" name="imu_to_tf" >
+    <param name="base_frame" value="base_link" />
+    <param name="base_stabilized_frame" value="scanmatcher_frame" />
+    <remap from="imu_topic" to="/imu/data" />
+  </node> -->
+
   <include file="$(find hector_mapping)/launch/mapping_default.launch">
     <arg name="base_frame" value="base_link"/>
     <arg name="odom_frame" value="base_link"/>
-    <arg name="pub_map_odom_transform" value="true"/>
-    <arg name="map_size" value="1024" />
+    <arg name="pub_map_odom_transform" value="false"/>
 
     <!-- Topic names -->
     <arg name="scan_topic" value="/scan" />
   </include>
+  
+
+<!--   <node pkg="tf" type="static_transform_publisher" name="correct_rotation" args="0 0 0 0 0 0 scanmatcher_frame base_link 100" /> -->
+
+<!--   <node pkg="tf" type="static_transform_publisher" name="link_to_stabilized" args="0 0 0 0 0 0 base_link base_stabilized_frame 100" /> -->
 </launch>
