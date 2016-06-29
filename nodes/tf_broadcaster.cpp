@@ -18,11 +18,11 @@ void handle_imu_rotation(const sensor_msgs::Imu &msg) {
 	tf::Vector3 axis = q.getAxis();
 	axis.setY(-axis.y());
 	tf::Quaternion q2(axis, -q.getAngle());
-	// Set the transform
+	// Set the transformZ
 	transform.setRotation(q2.normalize());
 	// Publish to tf
-	//br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "scanmatcher_frame", "base_link"));
-	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "laser"));
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "base_link"));
+	//br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "laser"));
 
 	//tf::Transform none;
 	//none.setOrigin(tf::Vector3(0.0,0.0,0.0));
