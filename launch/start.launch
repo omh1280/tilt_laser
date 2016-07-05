@@ -13,7 +13,7 @@
     <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args=".23  0 .01 0 0 0 base_link laser 10" />  -->
     <node type="laser_scan_assembler" pkg="laser_assembler" name="assembler">
         <param name="fixed_frame" type="string" value="world" />
-        <param name="max_scans" type="int" value="14" />
+        <param name="max_scans" type="int" value="19" />
     </node>
     <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" /> 
   </launch>
