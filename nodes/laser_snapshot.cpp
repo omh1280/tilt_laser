@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 	ros::service::waitForService("assemble_scans2");
 	
 	// Set update frequency (in HZ) to publish point cloud data
-	ros::Rate r(1.);
+	ros::Rate r(2.);
 
 	// Create publisher
 	ros::Publisher pub = n.advertise<sensor_msgs::PointCloud2>("cloud", 2);
@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	while (ros::ok()) {
 		// Server
 		AssembleScans2 srv;
-		srv.request.begin = ros::Time(0,0);
+		srv.request.begin = ros::Time::now() - ros::Duration(3.);
 		srv.request.end = ros::Time::now();
 		// Client
 		ros::ServiceClient client = n.serviceClient<AssembleScans2>("assemble_scans2");
