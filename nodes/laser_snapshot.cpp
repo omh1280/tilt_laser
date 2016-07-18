@@ -17,6 +17,9 @@ int main(int argc, char **argv) {
 	ros::Publisher pub = n.advertise<sensor_msgs::PointCloud2>("cloud", 2);
 
 	while (ros::ok()) {
+		if (ros::Time::now() == ros::Time(0,0)) {
+			continue;
+		}
 		// Server
 		AssembleScans2 srv;
 		srv.request.begin = ros::Time::now() - ros::Duration(3.);
