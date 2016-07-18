@@ -22,11 +22,6 @@ void handle_imu_rotation(const sensor_msgs::Imu &msg) {
 	transform.setRotation(q2.normalize());
 	// Publish to tf
 	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "base_link"));
-	//br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "laser"));
-
-	//tf::Transform none;
-	//none.setOrigin(tf::Vector3(0.0,0.0,0.0));
-	//br.sendTransform(tf::StampedTransform(none, ros::Time::now(), "base_link", "laser"));
 }
 
 int main(int argc, char **argv) {

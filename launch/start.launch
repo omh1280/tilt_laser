@@ -1,4 +1,4 @@
-  <launch>
+<launch>
     <!-- Tilt Laser Node-->
     <arg name="port" />
     <param name="/use_sim_time" value="true"/>
@@ -10,11 +10,12 @@
     </node>
     <node pkg="microstrain_comm_35" type="microstrain_comm_35_node" name="imu" /> -->
     <node name="tf_broadcaster" pkg="tilt_laser" type="tf_broadcaster" respawn="false" output="screen" />
-    <!-- <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args=".23  0 .01 0 0 0 base_link laser 5" />  -->
-    <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 0 0 0 0 base_link laser 5" /> 
+    <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args=".23  0 .01 0 0 0 base_link laser 5" /> 
+    <!--<node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 0 0 0 0 base_link laser 5" /> -->
     <node type="laser_scan_assembler" pkg="laser_assembler" name="assembler">
         <param name="fixed_frame" type="string" value="world" />
         <param name="max_scans" type="int" value="30" />
     </node>
     <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" /> 
-  </launch>
+</launch>
+
