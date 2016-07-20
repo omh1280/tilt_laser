@@ -3,7 +3,8 @@
 #include <sensor_msgs/PointCloud2.h>
 
 using namespace laser_assembler;
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
 	ros::init(argc, argv, "laser_snapshot");
 	ros::NodeHandle n;
 
@@ -11,7 +12,7 @@ int main(int argc, char **argv) {
 	ros::service::waitForService("assemble_scans2");
 	
 	// Set update frequency (in HZ) to publish point cloud data
-	ros::Rate r(1.);
+	ros::Rate r(2.);
 
 	// Create publisher
 	ros::Publisher pub = n.advertise<sensor_msgs::PointCloud2>("cloud", 2);
