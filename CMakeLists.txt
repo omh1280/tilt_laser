@@ -176,6 +176,7 @@ install(TARGETS tf_broadcaster laser_snapshot
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 install(FILES
     launch/start.launch
+    launch/bag_start.launch
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 

@@ -6,20 +6,29 @@
 #include "sensor_msgs/Imu.h"
 
 void handle_imu_rotation(const sensor_msgs::Imu &msg) {
-	// Creat tf broadcaster
+	// Create tf broadcaster
 	static tf::TransformBroadcaster br;
+	
 	tf::Transform transform;
 	transform.setOrigin(tf::Vector3(0.0, 0.0, 0.0));
+	
 	tf::Quaternion q;
+	
 	geometry_msgs::Quaternion quat = msg.orientation;
+
 	// Conversion function for quaternions
 	quaternionMsgToTF(quat, q);
-	// Below is crucial transformation -- I don't know why though
-	tf::Vector3 axis = q.getAxis();
-	axis.setY(-axis.y());
-	tf::Quaternion q2(axis, -q.getAngle());
-	// Set the transformZ
+	tf::Matrix3x3 m(q);
+	
+	double roll, pitch, yaw;
+	
+	m.getRPY(roll, pitch, yaw);
+	
+	tf::Quaternion q2;
+	q2.setRPY(roll, pitch, 0.0);
+		
 	transform.setRotation(q2.normalize());
+	
 	// Publish to tf
 	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "base_link"));
 }

@@ -1,14 +1,6 @@
 <launch>
-    <!-- Tilt Laser Node-->
-    <arg name="port" />
-    <param name="/use_sim_time" value="false"/>
+    <param name="/use_sim_time" value="true"/>
     
-    <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo" >
-    	<param name="port" type="string" value="$(arg port)" />
-        <param name="min_ang" type="double" value="-2.26" />
-        <param name="max_ang" type="double" value="2.26" />
-    </node>
-    <node pkg="rositaur" type="serial_sub" name="imu_serial" /> 
     <node name="tf_broadcaster" pkg="tilt_laser" type="tf_broadcaster" respawn="false" output="screen" />
     <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 0 0 0 0 base_link laser 5" /> 
     <node type="laser_scan_assembler" pkg="laser_assembler" name="assembler" output="screen">
@@ -17,4 +9,5 @@
     </node>
     <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" />
 </launch>
+
 
