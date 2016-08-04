@@ -17,4 +17,3 @@
     </node>
     <node name="snapshot" pkg="tilt_laser" type="laser_snapshot" />
 </launch>
-

@@ -5,8 +5,10 @@
 #include "tf/transform_datatypes.h"
 #include "sensor_msgs/Imu.h"
 
-void handle_imu_rotation(const sensor_msgs::Imu &msg) {
-	// Create tf broadcaster
+void handle_imu_rotation(const sensor_msgs::Imu &msg) 
+{
+	// Creat tf broadcaster
+
 	static tf::TransformBroadcaster br;
 	
 	tf::Transform transform;
@@ -33,7 +35,8 @@ void handle_imu_rotation(const sensor_msgs::Imu &msg) {
 	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "base_link"));
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
 	ros::init(argc, argv, "tf_broadcaster");
 	ros::NodeHandle n;
 	
