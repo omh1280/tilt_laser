@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		}
 		// Server
 		AssembleScans2 srv;
-		srv.request.begin = ros::Time::now() - ros::Duration(3.);
+		srv.request.begin = ros::Time(0,0);
 		srv.request.end = ros::Time::now();
 		// Client
 		ros::ServiceClient client = n.serviceClient<AssembleScans2>("assemble_scans2");

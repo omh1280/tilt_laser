@@ -3,7 +3,6 @@
 #include "tf/transform_broadcaster.h"
 #include "geometry_msgs/Quaternion.h"
 #include "tf/transform_datatypes.h"
-#include "sensor_msgs/Imu.h"
 
 void handle_imu_rotation(const sensor_msgs::Imu &msg) 
 {
